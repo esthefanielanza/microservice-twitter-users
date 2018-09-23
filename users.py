@@ -125,7 +125,7 @@ def create_user():
     except Exception as e:
         db.session.rollback()
         print('Error:', e)
-        return jsonify({ 'type': 'UNKNOW', 'description': 'An unknown error was detected'}), 500
+        return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
 @app.route('/<id>', methods=['GET'])
 def get_user(id):
@@ -142,7 +142,7 @@ def get_user(id):
     except Exception as e:
         db.session.rollback()
         print('Error:', e)
-        return jsonify({ 'type': 'UNKNOW', 'description': 'An unknown error was detected'}), 500
+        return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
 @app.route('/<id>', methods=['DELETE'])
 def remove_user(id):
@@ -180,7 +180,7 @@ def remove_user(id):
     except Exception as e:
         db.session.rollback()
         print('Error:', e)
-        return jsonify({ 'type': 'UNKNOW', 'description': 'An unknown error was detected'}), 500
+        return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
 
 @app.route('/<id>/follow', methods=['PUT'])
@@ -222,7 +222,7 @@ def follow(id):
     except Exception as e:
         db.session.rollback()
         print('Error:', e)
-        return jsonify({ 'type': 'UNKNOW', 'description': 'An unknown error was detected'}), 500
+        return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
 @app.route('/<id>/unfollow', methods=['PUT'])
 def unfollow(id):
@@ -266,7 +266,7 @@ def unfollow(id):
     except Exception as e:
         db.session.rollback()
         print('Error:', e)
-        return jsonify({ 'type': 'UNKNOW', 'description': 'An unknown error was detected'}), 500
+        return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
     
 if __name__ == '__main__':
