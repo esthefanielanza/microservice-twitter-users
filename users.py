@@ -5,4 +5,4 @@ app = Flask(__name__)
 
 @app.route('/')
 def register():
-  return 'Should register a user'
+  return 'Should register a user, pls work'
