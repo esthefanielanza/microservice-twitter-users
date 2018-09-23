@@ -67,7 +67,7 @@ def validate_data(fields, request):
             error[field[0]] = '%s can not be larger than %d characters' % (field[0], field[1])
 
     if(error):
-        return jsonify({ 'type': 'LIMIT', 'description': 'Field is beyond the character limit', 'error': error })
+        return jsonify({ 'type': 'LIMIT', 'description': 'Field is beyond the character limit', 'error': error }), 400
     return None
 
 def string_to_array(string):
@@ -212,7 +212,7 @@ def follow(id):
             return jsonify({}), 204
 
         else:
-            return jsonify({ 'type': 'INVALID', 'descriptio': 'User <%s> already follows User <%s>' % (id, follow_user) }), 400
+            return jsonify({ 'type': 'INVALID', 'description': 'User <%s> already follows User <%s>' % (id, follow_user) }), 400
 
     except orm.exc.UnmappedInstanceError as e:
         db.session.rollback()
@@ -234,7 +234,7 @@ def unfollow(id):
         user_to_unfollow = User.query.get(request.json['unfollow_user'])
         
         if(not user_to_unfollow):
-            return jsonify({ 'type': 'NOT_EXISTS', 'description': 'Unable to follow, User <%s> does not exist' % request.json['unfollow_user']}), 404
+            return jsonify({ 'type': 'NOT_EXISTS', 'description': 'Unable to unfollow, User <%s> does not exist' % request.json['unfollow_user']}), 404
         
         user_data = user_schema.dump(user)
         user_data = user_data.data
